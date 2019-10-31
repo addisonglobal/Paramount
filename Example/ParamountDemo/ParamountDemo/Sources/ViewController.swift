@@ -3,13 +3,13 @@ import Paramount
 
 class ViewController: UIViewController {
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    Manager.action = {
-      print("action touched")
-    }
+        Manager.action = {
+          print("action touched")
+        }
 
-    Manager.show()
-  }
+        Manager.show()
+        }
 }

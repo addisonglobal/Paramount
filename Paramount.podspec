@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
   s.resource_bundle = {
     'Paramount' => ['Sources/Paramount.bundle/*.png']
   }
-
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.0' }
+  s.swift_version = '5.0'
   s.ios.frameworks = 'UIKit', 'Foundation'
 end

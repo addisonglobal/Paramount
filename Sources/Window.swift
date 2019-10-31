@@ -10,25 +10,25 @@ import UIKit
 
 public class Window: UIWindow {
 
-  public override init(frame: CGRect) {
-    super.init(frame: frame)
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
 
-    backgroundColor = UIColor.clearColor()
-    windowLevel = UIWindowLevelStatusBar + 100
-  }
-
-  public required init?(coder aDecoder: NSCoder) {
-    fatalError()
-  }
-
-  public override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
-    var pointInside = false
-
-    if let viewController = rootViewController as? ViewController
-      where viewController.shouldReceiveTouch(windowPoint: point) {
-      pointInside = super.pointInside(point, withEvent: event)
+        backgroundColor = .clear
+        windowLevel = UIWindow.Level.statusBar + 100
     }
 
-    return pointInside
-  }
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
+
+    public override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        var pointInside = false
+
+            if let viewController = rootViewController as? ViewController,
+                viewController.shouldReceiveTouch(windowPoint: point) {
+                pointInside = super.point(inside: point, with: event)
+        }
+
+        return pointInside
+    }
 }

@@ -9,58 +9,58 @@
 import UIKit
 
 public class Toolbar: UIView {
-  public private(set) var actionItem: ToolbarItem!
-  public private(set) var closeItem: ToolbarItem!
+    public private(set) var actionItem: ToolbarItem!
+    public private(set) var closeItem: ToolbarItem!
 
-  var dragHandle: UIView!
-  var dragHandleImageView: UIImageView!
-  var stackView: UIStackView!
+    var dragHandle: UIView!
+    var dragHandleImageView: UIImageView!
+    var stackView: UIStackView!
 
-  public override init(frame: CGRect) {
-    super.init(frame: frame)
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
 
-    dragHandle = UIView()
-    dragHandle.backgroundColor = UIColor(white: 1.0, alpha: 0.95)
-    addSubview(dragHandle)
+        dragHandle = UIView()
+        dragHandle.backgroundColor = UIColor(white: 1.0, alpha: 0.95)
+        addSubview(dragHandle)
 
-    dragHandleImageView = UIImageView(image: UIImage.make("drag_handle"))
-    dragHandle.addSubview(dragHandleImageView)
+        dragHandleImageView = UIImageView(image: UIImage.make(name: "drag_handle"))
+        dragHandle.addSubview(dragHandleImageView)
 
-    actionItem = ToolbarItem.make(title: "action", image: UIImage.make("action"))
-    closeItem = ToolbarItem.make(title: "close", image: UIImage.make("close"))
+        actionItem = ToolbarItem.make(title: "action", image: UIImage.make(name: "action"))
+        closeItem = ToolbarItem.make(title: "close", image: UIImage.make(name: "close"))
 
-    stackView = UIStackView(arrangedSubviews: [actionItem, closeItem])
-    stackView.axis = .Horizontal
-    stackView.distribution = .FillEqually
-    addSubview(stackView)
+        stackView = UIStackView(arrangedSubviews: [actionItem, closeItem])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        addSubview(stackView)
 
-    self.frame.size.width = Dimension.Handle.width + Dimension.ToolbarItem.width * CGFloat(stackView.arrangedSubviews.count)
-    self.frame.size.height = Dimension.Toolbar.height
+        self.frame.size.width = Dimension.Handle.width + Dimension.ToolbarItem.width * CGFloat(stackView.arrangedSubviews.count)
+        self.frame.size.height = Dimension.Toolbar.height
 
-    setupContraints()
-  }
+        setupContraints()
+    }
 
-  public required init?(coder aDecoder: NSCoder) {
-    fatalError()
-  }
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
 
-  func setupContraints() {
-    // Drag Handle
-    dragHandle.translatesAutoresizingMaskIntoConstraints = false
-    dragHandle.topAnchor.constraintEqualToAnchor(topAnchor).active = true
-    dragHandle.leftAnchor.constraintEqualToAnchor(leftAnchor).active = true
-    dragHandle.heightAnchor.constraintEqualToAnchor(heightAnchor).active = true
-    dragHandle.widthAnchor.constraintEqualToConstant(Dimension.Handle.width).active = true
+    func setupContraints() {
+        // Drag Handle
+        dragHandle.translatesAutoresizingMaskIntoConstraints = false
+        dragHandle.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        dragHandle.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        dragHandle.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
+        dragHandle.widthAnchor.constraint(equalToConstant: Dimension.Handle.width).isActive = true
 
-    dragHandleImageView.translatesAutoresizingMaskIntoConstraints = false
-    dragHandleImageView.centerXAnchor.constraintEqualToAnchor(dragHandle.centerXAnchor).active = true
-    dragHandleImageView.centerYAnchor.constraintEqualToAnchor(dragHandle.centerYAnchor).active = true
+        dragHandleImageView.translatesAutoresizingMaskIntoConstraints = false
+        dragHandleImageView.centerXAnchor.constraint(equalTo: dragHandle.centerXAnchor).isActive = true
+        dragHandleImageView.centerYAnchor.constraint(equalTo: dragHandle.centerYAnchor).isActive = true
 
-    // Items
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    stackView.topAnchor.constraintEqualToAnchor(topAnchor).active = true
-    stackView.leftAnchor.constraintEqualToAnchor(dragHandle.rightAnchor).active = true
-    stackView.heightAnchor.constraintEqualToAnchor(heightAnchor).active = true
-    stackView.rightAnchor.constraintEqualToAnchor(rightAnchor).active = true
-  }
+        // Items
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        stackView.leftAnchor.constraint(equalTo: dragHandle.rightAnchor).isActive = true
+        stackView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
+        stackView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        }
 }
