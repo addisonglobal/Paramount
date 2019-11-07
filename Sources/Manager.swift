@@ -14,7 +14,7 @@ public class Manager {
     public static var action: Action?
 
     public static var window: UIWindow = {
-        let window = UIWindow(frame: UIScreen.main.bounds)
+        let window = Window(frame: UIScreen.main.bounds)
         window.rootViewController = viewController
 
         return window
