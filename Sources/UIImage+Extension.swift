@@ -11,6 +11,6 @@ import UIKit
 public extension UIImage {
     static func make(name: String) -> UIImage? {
         let bundle = Bundle(for: Paramount.Toolbar.self)
-        return UIImage(named: "Paramount.bundle/\(name)", in: bundle, compatibleWith: nil)
+        return UIImage(named: name, in: bundle, compatibleWith: nil)
     }
 }
